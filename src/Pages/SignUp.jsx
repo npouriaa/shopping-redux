@@ -5,8 +5,12 @@ import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
 import HttpsIcon from "@mui/icons-material/Https";
 import { Link } from "react-router-dom";
 import { Visibility } from "@mui/icons-material";
+import { useDispatch, useSelector } from "react-redux";
+import { actions } from "../redux/signUpSlice";
 
 const SignUp = () => {
+  const dispatch = useDispatch();
+  const { email, password } = useSelector((state) => state.signUp);
   return (
     <div className="sign-up-con">
       <div className="text-con">
@@ -17,11 +21,17 @@ const SignUp = () => {
       <div className="form">
         <div className="input-con">
           <AlternateEmailIcon htmlColor="#9a9a9a" />
-          <TextField className="input" size="small" label="Email" />
+          <TextField
+            onChange={(e) => dispatch(actions.setEmail(e.target.value))}
+            className="input"
+            size="small"
+            label="Email"
+          />
         </div>
         <div className="input-con">
           <HttpsIcon htmlColor="#9a9a9a" />
           <TextField
+            onChange={(e) => dispatch(actions.setPassword(e.target.value))}
             type="password"
             className="input"
             size="small"
@@ -29,9 +39,7 @@ const SignUp = () => {
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
-                  <IconButton
-                    edge="end"
-                  >
+                  <IconButton edge="end">
                     <Visibility />
                   </IconButton>
                 </InputAdornment>
