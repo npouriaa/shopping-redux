@@ -1,5 +1,37 @@
+@font-face {
+  font-family: "poppins-md";
+  src: url(../assets/fonts/Poppins-Medium.ttf);
+}
+
+@font-face {
+  font-family: "poppins-bold";
+  src: url(../assets/fonts/Poppins-Bold.ttf);
+}
+
+@mixin font-md {
+  font-family: "poppins-md";
+}
+
+@mixin font-bold {
+  font-family: "poppins-bold";
+}
+
 @mixin d-flex($justify, $align) {
   display: flex;
   justify-content: $justify;
   align-items: $align;
+}
+
+@mixin w-full {
+  width: 100%;
+}
+
+@mixin h-full {
+  height: 100%;
+}
+
+@mixin responsive($size) {
+  @media (min-width: $size) {
+    @content
+  }
 }

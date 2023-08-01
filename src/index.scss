@@ -1,13 +1,14 @@
 @import "./scss/mixin.scss";
+@import "./scss/variables.scss";
 
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+* {
+  @include font-md();
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 body {
-  width: 100vw;
-  height: 100vh;
+  background-color: $lightBlue-color;
   @include d-flex(center, center);
 }
