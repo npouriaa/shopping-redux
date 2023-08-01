@@ -1,16 +1,24 @@
-import React from "react";
+import React, { useRef } from "react";
 import "../scss/signUp.scss";
 import { Button, IconButton, InputAdornment, TextField } from "@mui/material";
 import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
 import HttpsIcon from "@mui/icons-material/Https";
 import { Link } from "react-router-dom";
-import { Visibility } from "@mui/icons-material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
 import { actions } from "../redux/signUpSlice";
 
 const SignUp = () => {
   const dispatch = useDispatch();
-  const { email, password } = useSelector((state) => state.signUp);
+  const { email, password, passwordVisibility, passwordError , emailError } = useSelector(
+    (state) => state.signUp
+  );
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(actions.setEmailError(email === "" ? true : false));
+    dispatch(actions.setPasswordError(password === "" ? true : false));
+  };
+
   return (
     <div className="sign-up-con">
       <div className="text-con">
@@ -18,13 +26,14 @@ const SignUp = () => {
         <h3>welcome to the online shop</h3>
         <small>sign up now and enjoy shopping</small>
       </div>
-      <div className="form">
+      <form onSubmit={(e) => handleSubmit(e)} className="form">
         <div className="input-con">
           <AlternateEmailIcon htmlColor="#9a9a9a" />
           <TextField
             onChange={(e) => dispatch(actions.setEmail(e.target.value))}
             className="input"
             size="small"
+            error={emailError}
             label="Email"
           />
         </div>
@@ -32,15 +41,23 @@ const SignUp = () => {
           <HttpsIcon htmlColor="#9a9a9a" />
           <TextField
             onChange={(e) => dispatch(actions.setPassword(e.target.value))}
-            type="password"
+            type={passwordVisibility ? "text" : "password"}
             className="input"
             size="small"
+            error={passwordError}
             label="Password"
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
-                  <IconButton edge="end">
-                    <Visibility />
+                  <IconButton
+                    onClick={() =>
+                      dispatch(
+                        actions.setPasswordVisibility(!passwordVisibility)
+                      )
+                    }
+                    edge="end"
+                  >
+                    {passwordVisibility ? <VisibilityOff /> : <Visibility />}
                   </IconButton>
                 </InputAdornment>
               ),
@@ -48,12 +65,12 @@ const SignUp = () => {
           />
         </div>
         <div className="button-con">
-          <Button className="form-btn" variant="contained">
+          <Button type="submit" className="form-btn" variant="contained">
             Sign Up
           </Button>
           <Link className="link">Already a member ? Login</Link>
         </div>
-      </div>
+      </form>
     </div>
   );
 };
