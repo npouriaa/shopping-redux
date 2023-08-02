@@ -13,14 +13,10 @@ const SignUp = () => {
   const dispatch = useDispatch();
   const { email, password } = useSelector((state) => state.auth);
 
-  const setUser = async () => {
+  const signUpUser = async () => {
     dispatch(loaderActions.setLoading(true));
     try {
-      const response = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
+      await createUserWithEmailAndPassword(auth, email, password);
       dispatch(authActions.setEmail(""));
       dispatch(authActions.setPassword(""));
       dispatch(notificationActions.setSeverity("success"));
@@ -36,7 +32,7 @@ const SignUp = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validator(email, password, dispatch)) {
-      setUser();
+      signUpUser();
     }
   };
   return (
