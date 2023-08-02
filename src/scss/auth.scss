@@ -1,12 +1,12 @@
 @import "../scss/mixin.scss";
 @import "../scss/variables.scss";
 
-.sign-up-con {
+.auth-con {
   width: 450px;
   height: 450px;
   background-color: $primary-color-lightGray;
   border-radius: 15px;
-  box-shadow: 0 0 30px 5px rgba(86, 121, 171, 0.1);
+  box-shadow: 0 0 30px 5px rgba(86, 121, 171, .1);
   padding: 10px;
   flex-direction: column;
   gap: 20px;
@@ -62,7 +62,7 @@
 }
 
 @include responsive(360px) {
-  .sign-up-con {
+  .auth-con {
     width: 320px;
   }
   .MuiFormLabel-root {
@@ -89,7 +89,7 @@
 }
 
 @include responsive(640px) {
-  .sign-up-con {
+  .auth-con {
     width: 450px;
   }
   .text-con h3 {

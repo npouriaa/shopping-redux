@@ -1,16 +1,21 @@
 import React from "react";
 import "./App.scss";
-import SignUp from "./Pages/SignUp";
 import { useSelector } from "react-redux";
 import Loader from "./Components/Loader";
+import Routers from "./Routers/Routers";
+import Auth from "./Components/Auth";
+import ValidatorContextProvider from "./Context/ValidatorContext.jsx";
 
 const App = () => {
   const loading = useSelector((state) => state.loader.loading);
+
   return (
-    <div className="container">
-      {loading ? <Loader /> : ""}
-      <SignUp />
-    </div>
+    <ValidatorContextProvider>
+      <div className="container">
+        {loading ? <Loader /> : ""}
+        <Routers />
+      </div>
+    </ValidatorContextProvider>
   );
 };
 

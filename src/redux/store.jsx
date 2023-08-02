@@ -1,11 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import signUpReducer from "./signUpSlice";
+import authReducer from "./authSlice";
 import loaderReducer from "./loaderSlice";
 import notificationReducer from "./notificationSlice";
 
 const store = configureStore({
   reducer: {
-    signUp: signUpReducer,
+    auth: authReducer,
     loader: loaderReducer,
     notification: notificationReducer,
   },
