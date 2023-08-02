@@ -6,7 +6,7 @@
   height: 450px;
   background-color: $primary-color-lightGray;
   border-radius: 15px;
-  box-shadow: 0 0 30px 5px rgba(86, 121, 171, .1);
+  box-shadow: 0 0 30px 5px rgba(86, 121, 171, 0.1);
   padding: 10px;
   flex-direction: column;
   gap: 20px;
@@ -31,11 +31,15 @@
     @include w-full;
     @include d-flex(center, center);
     flex-direction: column;
-    gap: 40px;
+    gap: 50px;
     .input-con {
-      gap: 10px;
+      position: relative;
+
       @include d-flex(start, center);
       .input {
+        right: 0;
+        top: -11px;
+        position: absolute;
         width: 90%;
       }
     }

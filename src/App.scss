@@ -2,7 +2,6 @@
 @import "./scss/mixin.scss";
 
 .container {
-  width: 100vw;
   height: 100vh;
   position: relative;
   @include d-flex(center, center);
