@@ -6,7 +6,25 @@ const initialState = {
   passwordVisibility: false,
   passwordError: false,
   emailError: false,
-  currentUser: {},
+  currentUser: {
+    accessToken: "",
+    auth: {},
+    displayName: null,
+    email: "",
+    emailVerified: false,
+    isAnonymous: false,
+    metadata: {},
+    phoneNumber: null,
+    photoURL: null,
+    proactiveRefresh: {},
+    providerData: [],
+    providerId: "",
+    reloadListener: null,
+    reloadUserInfo: {},
+    stsTokenManager: {},
+    tenantId: null,
+    uid: "",
+  },
 };
 
 const authSlice = createSlice({

@@ -50,11 +50,11 @@ const authorization = async (
 
 const AuthContextProvider = ({ children }) => {
   const dispatch = useDispatch()
+  const unSub = onAuthStateChanged(auth, (user) => {
+    dispatch(authActions.setCurrentUser(user))
+    console.log(user)
+  });
   useEffect(() => {
-    const unSub = onAuthStateChanged(auth, (user) => {
-      dispatch(authActions.setCurrentUser(user))
-      console.log(user)
-    });
 
     return () => {
       unSub();
