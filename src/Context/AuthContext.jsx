@@ -1,9 +1,11 @@
 import { authActions } from "../redux/authSlice";
 import * as emailValidator from "email-validator";
-import { createContext } from "react";
+import { createContext, useEffect } from "react";
 import { loaderActions } from "../redux/loaderSlice";
 import { notificationActions } from "../redux/notificationSlice";
 import { auth } from "../firebase";
+import { onAuthStateChanged } from "firebase/auth";
+import { useDispatch } from "react-redux";
 
 export const AuthContext = createContext();
 
@@ -47,6 +49,17 @@ const authorization = async (
 };
 
 const AuthContextProvider = ({ children }) => {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    const unSub = onAuthStateChanged(auth, (user) => {
+      dispatch(authActions.setCurrentUser(user))
+      console.log(user)
+    });
+
+    return () => {
+      unSub();
+    };
+  }, []);
   return (
     <AuthContext.Provider value={{ validator, authorization }}>
       {children}

@@ -6,6 +6,7 @@ const initialState = {
   passwordVisibility: false,
   passwordError: false,
   emailError: false,
+  currentUser: {},
 };
 
 const authSlice = createSlice({
@@ -27,8 +28,11 @@ const authSlice = createSlice({
     setEmailError(state, action) {
       state.emailError = action.payload;
     },
-    reserStates(state) {
+    reserStates() {
       return initialState;
+    },
+    setCurrentUser(state, action) {
+      state.currentUser = action.payload;
     },
   },
 });
