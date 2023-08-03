@@ -1,0 +1,43 @@
+@import "../scss/mixin.scss";
+@import "../scss/variables.scss";
+
+.navBar-con {
+  width: 100%;
+  height: 80px;
+  @include d-flex(center, center);
+
+  .menu-items {
+    width: 450px;
+    height: 50px;
+    border-radius: 30px;
+    background-color: #fff;
+    list-style: none;
+    @include d-flex(space-evenly, center);
+    li {
+      cursor: pointer;
+      height: 100%;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 5px;
+      text-transform: uppercase;
+      position: relative;
+      @include d-flex(center, center);
+      height: 20px;
+      overflow: hidden;
+      &:hover div {
+        transform: translateY(-35px);
+      }
+      div {
+        transition: all 0.4s;
+        padding: 5px;
+        height: 60px;
+        @include d-flex(center, center);
+        flex-direction: column;
+        span {
+          position: absolute;
+          bottom: -13px;
+        }
+      }
+    }
+  }
+}

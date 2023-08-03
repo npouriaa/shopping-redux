@@ -1,15 +1,20 @@
-@font-face {
-  font-family: "poppins-md";
-  src: url(../assets/fonts/Poppins-Medium.ttf);
-}
+// @font-face {
+//   font-family: "poppins-md";
+//   src: url(../assets/fonts/Poppins-Medium.ttf);
+// }
 
 @font-face {
   font-family: "poppins-bold";
   src: url(../assets/fonts/Poppins-Bold.ttf);
 }
 
+@font-face {
+  font-family: "adineue";
+  src: url(../assets/fonts/adineue-pro-regular.ttf);
+}
+
 @mixin font-md {
-  font-family: "poppins-md";
+  font-family: "adineue" !important;
 }
 
 @mixin font-bold {

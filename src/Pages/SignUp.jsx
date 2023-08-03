@@ -24,7 +24,7 @@ const SignUp = () => {
   return (
     <Auth
       title="sign up"
-      welcome="welocome to the online shop"
+      welcome="welcome to the online shop"
       description="sign up now and enjoy shopping"
       route="login"
       routeText="Already a member ? Login"

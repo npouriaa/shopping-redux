@@ -1,11 +1,11 @@
-import { signOut } from "firebase/auth";
 import React from "react";
-import { auth } from "../firebase";
+import Header from '../Components/Header'
+import '../scss/home.scss'
 
 const Home = () => {
   return (
-    <div>
-      <button onClick={() => signOut(auth)}>sign out</button>
+    <div className="home">
+      <Header/>
     </div>
   );
 };

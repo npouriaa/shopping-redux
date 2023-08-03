@@ -21,7 +21,9 @@ const Login = () => {
         dispatch,
         "Logged in successfuly"
       );
-       navigate("/");
+      setTimeout(() => {
+        navigate("/");
+      }, 1500);
     }
   };
   return (
