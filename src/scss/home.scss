@@ -2,7 +2,7 @@
 @import "../scss/variables.scss";
 
 .home{
-    width: 100%;
-    height: 100%;
+    @include w-full();
+    @include h-full();
     @include d-flex(center , start)
 }

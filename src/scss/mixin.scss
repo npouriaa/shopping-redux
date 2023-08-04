@@ -28,11 +28,11 @@
 }
 
 @mixin w-full {
-  width: 100%;
+  @include w-full();
 }
 
 @mixin h-full {
-  height: 100%;
+  @include h-full();
 }
 
 @mixin responsive($size) {

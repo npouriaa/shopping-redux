@@ -1,6 +1,6 @@
 @import "../scss/mixin.scss";
 @import "../scss/variables.scss";
 
-.header-con{
-    width: 100%;
+.header-con {
+  @include w-full();
 }

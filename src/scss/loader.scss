@@ -4,13 +4,13 @@
 .loader-con {
   z-index: 10;
   width: 100vw;
-  height: 100%;
+  @include w-full();
   @include d-flex(center , center);
   position: absolute;
   .layer{
     position: absolute;
-    width: 100%;
-    height: 100%;
+    @include w-full();
+    @include h-full();
     background-color: $primary-color-black;
     opacity: .6;
   }
@@ -41,8 +41,8 @@
       &::before {
         position: absolute;
         content: "";
-        width: 100%;
-        height: 100%;
+        @include w-full();
+        @include h-full();
         background-color: #f8f8f859;
         border-radius: inherit;
         animation: loading2_713 3.5s ease both infinite;
@@ -85,7 +85,7 @@
   }
 
   40% {
-    width: 100%;
+    @include w-full();
     transform: translateX(0px);
   }
 
@@ -95,7 +95,7 @@
   }
 
   90% {
-    width: 100%;
+    @include w-full();
     transform: translateX(0px);
   }
 
@@ -117,7 +117,7 @@
   }
 
   80% {
-    width: 100%;
+    @include w-full();
     transform: translateX(0px);
   }
 
