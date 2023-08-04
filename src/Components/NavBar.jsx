@@ -9,6 +9,15 @@ const NavBar = () => {
   return (
     <>
       <div className="navBar-con">
+        <Link>
+          <button className="auth-btn btn">
+            <span></span>
+            <div className="text-layer">
+              <AccountCircleIcon className="cart-icon" />
+              sign up / login
+            </div>
+          </button>
+        </Link>
         <ul className="menu-items">
           <Link className="link">
             <li>
@@ -43,21 +52,15 @@ const NavBar = () => {
             </li>
           </Link>
         </ul>
-
-        <button className="cart-btn btn">
-          <span></span>
-          <div className="text-layer">
-            <ShoppingCartIcon className="cart-icon" />
-            cart
-          </div>
-        </button>
-        <button className="auth-btn btn">
-          <span></span>
-          <div className="text-layer">
-            <AccountCircleIcon className="cart-icon" />
-            sign up / login
-          </div>
-        </button>
+        <Link>
+          <button className="cart-btn btn">
+            <span></span>
+            <div className="text-layer">
+              <ShoppingCartIcon className="cart-icon" />
+              cart
+            </div>
+          </button>
+        </Link>
       </div>
       <button className="hamburger-menu-btn">
         <div className="menu-icon">
