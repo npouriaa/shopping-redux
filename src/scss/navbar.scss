@@ -2,24 +2,22 @@
 @import "../scss/variables.scss";
 
 .navBar-con {
-  width: 100%;
-  height: 80px;
-  @include d-flex(center, center);
-
+  margin: 40px auto;
+  gap: 30px;
+  width: 650px;
+  height: 50px;
+  border-radius: 30px;
+  background-color: #fff;
   .menu-items {
-    width: 450px;
-    height: 50px;
-    border-radius: 30px;
-    background-color: #fff;
     list-style: none;
     @include d-flex(space-evenly, center);
     li {
       cursor: pointer;
       height: 100%;
       font-weight: 600;
+      text-transform: uppercase;
       font-size: 14px;
       padding: 5px;
-      text-transform: uppercase;
       position: relative;
       @include d-flex(center, center);
       height: 20px;
@@ -28,7 +26,7 @@
         transform: translateY(-35px);
       }
       div {
-        transition: all 0.4s;
+        transition: all 0.5s;
         padding: 5px;
         height: 60px;
         @include d-flex(center, center);
@@ -39,5 +37,217 @@
         }
       }
     }
+  }
+  .auth-btn {
+    width: 140px;
+  }
+  .cart-btn {
+    width: 90px;
+  }
+  .btn {
+    height: 40px;
+    cursor: pointer;
+    position: relative;
+    background-color: $orange-color;
+    border-radius: 20px;
+    color: #fff;
+    border: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    .cart-icon {
+      height: 20px;
+    }
+    .text-layer {
+      width: 100%;
+      height: 100%;
+      top: 0;
+      position: absolute;
+      @include d-flex(center, center);
+      z-index: 20;
+    }
+    &:hover span {
+      left: 0;
+    }
+    span {
+      left: -140px;
+      width: 100%;
+      height: 100%;
+      transition: all 0.5s;
+      position: absolute;
+      top: 0;
+      z-index: 10;
+      transition: all 0.2s;
+      border-radius: 20px;
+      background-color: $purple-color;
+    }
+  }
+}
+
+.hamburger-menu-btn {
+  z-index: 10;
+  border: none;
+  background-color: #b4b7d9;
+  border-radius: 50%;
+  position: fixed;
+  right: 15px;
+  top: 15px;
+  .menu-icon {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+
+    .menu-icon__cheeckbox {
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: relative;
+      cursor: pointer;
+      z-index: 2;
+      -webkit-touch-callout: none;
+      position: absolute;
+      opacity: 0;
+    }
+    div {
+      margin: auto;
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      width: 22px;
+      height: 12px;
+    }
+    span {
+      position: absolute;
+      display: block;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      border-radius: 1px;
+      transition: all 0.2s cubic-bezier(0.1, 0.82, 0.76, 0.965);
+
+      &:first-of-type {
+        top: 0;
+      }
+      &:last-of-type {
+        bottom: 0;
+      }
+    }
+    &.active,
+    .menu-icon__cheeckbox:checked + div {
+      span {
+        &:first-of-type {
+          transform: rotate(45deg);
+          top: 5px;
+        }
+        &:last-of-type {
+          transform: rotate(-45deg);
+          bottom: 5px;
+        }
+      }
+    }
+
+    &.active:hover span:first-of-type,
+    &.active:hover span:last-of-type,
+    &:hover .menu-icon__cheeckbox:checked + div span:first-of-type,
+    &:hover .menu-icon__cheeckbox:checked + div span:last-of-type {
+      width: 22px;
+    }
+
+    &:hover {
+      @media (min-width: 1024px) {
+        span:first-of-type {
+          width: 26px;
+        }
+
+        span:last-of-type {
+          width: 12px;
+        }
+      }
+    }
+  }
+}
+
+.hamburger-menu {
+  width: 100vw;
+  height: 100vh;
+  bottom: 0;
+  position: absolute;
+  background-color: $purple-color;
+  transition: all 0.6s;
+  overflow: hidden;
+  flex-direction: column;
+  @include d-flex(center, start);
+  .title {
+    gap: 15px;
+    flex-direction: column;
+    letter-spacing: 4px;
+    color: #fff;
+    font-size: 20px;
+    text-transform: uppercase;
+    width: 100%;
+    @include d-flex(center, center);
+    p {
+      text-transform: capitalize;
+      font-size: 14px;
+    }
+  }
+  ul {
+    padding: 20px;
+    @include d-flex(space-evenly, start);
+    flex-direction: column;
+    width: 100%;
+    height: 400px;
+    list-style: none;
+    li {
+      position: relative;
+      color: #fff;
+      font-weight: 900;
+      gap: 5px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-size: 25px;
+      @include d-flex(center, center);
+      .li-num {
+        right: -25px;
+        position: absolute;
+        font-size: 14px;
+        font-weight: 400;
+      }
+      .li-line {
+        width: 30px;
+        transition: all 0.3s;
+        height: 3px;
+        background-color: #fff;
+      }
+    }
+  }
+}
+
+.hidden {
+  width: 100vw;
+  transition: all 0.6s;
+  height: 0;
+}
+
+@include responsive(360px) {
+  .navBar-con {
+    display: none;
+  }
+  .hamburger-menu-btn {
+    display: block;
+  }
+}
+
+@include responsive(480px) {
+}
+
+@include responsive(640px) {
+  .navBar-con {
+    @include d-flex(center, center);
+  }
+  .hamburger-menu-btn {
+    display: none;
   }
 }
