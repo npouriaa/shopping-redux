@@ -11,12 +11,19 @@ import { auth } from "../firebase";
 
 const NavBar = () => {
   const hamburgerMenuRef = useRef();
+  const arrowIconRef = useRef();
   const currentUser = useSelector((state) => state.auth.currentUser);
   const navigate = useNavigate();
+  const subMenuRef = useRef();
 
   const signOutUser = () => {
     signOut(auth);
     navigate("/login");
+  };
+
+  const accountBtnHandler = () => {
+    arrowIconRef.current.classList.toggle("rotateIcon");
+    subMenuRef.current.classList.toggle("hideSubMenu");
   };
 
   return (
@@ -118,15 +125,24 @@ const NavBar = () => {
             </Link>
           ) : (
             <div className="account-btn-con">
-              <button className="account-btn btn">
+              <button
+                onClick={() => accountBtnHandler()}
+                className="account-btn btn"
+              >
                 <span className="acc-btn-color-layer"></span>
                 <div className="text-layer">
                   <AccountCircleIcon className="icon" />
                   account
-                  <KeyboardArrowDownIcon className="icon rotate" />
+                  <KeyboardArrowDownIcon
+                    ref={arrowIconRef}
+                    className="icon rotate "
+                  />
                 </div>
               </button>
-              <div className="submenu">
+              <div
+                ref={subMenuRef}
+                className="submenu hideSubMenu submenu-effect"
+              >
                 <p>Email :</p>
                 <p>{currentUser.email}</p>
                 <div className="signout-btn-con">
@@ -201,13 +217,6 @@ const NavBar = () => {
               <span className="li-line"></span>
               cart
               <span className="li-num">05</span>
-            </li>
-          </Link>
-          <Link className="link">
-            <li>
-              <span className="li-line"></span>
-              sign up / login
-              <span className="li-num">06</span>
             </li>
           </Link>
         </ul>

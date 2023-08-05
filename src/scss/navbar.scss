@@ -7,13 +7,12 @@ nav {
   .narrow-items-con {
     padding: 10px;
     width: 100%;
-    .auth-btn {
-      border-radius: 30px;
-      width: 200px;
-      height: 40px;
-      @include btn-style;
-      background-color: $orange-color;
-    }
+    // .auth-btn {
+    //   border-radius: 30px;
+    //   height: 40px;
+    //   @include btn-style;
+    //   background-color: $orange-color;
+    // }
     .hamburger-menu-btn {
       z-index: 30;
       border: none;
@@ -134,13 +133,13 @@ nav {
         }
       }
     }
-
-    .auth-btn {
-      width: 140px;
-    }
     .cart-btn {
       width: 90px;
     }
+  }
+
+  .auth-btn {
+    width: 140px;
   }
   .btn {
     @include btn-style;
@@ -182,16 +181,14 @@ nav {
 
   .account-btn-con {
     position: relative;
-    &:hover .submenu {
-      height: 120px;
-      padding: 10px;
-      bottom: -130px;
-    }
     &:hover .acc-btn-color-layer {
       left: 0;
     }
     &:hover .rotate {
       transform: rotate(180deg);
+    }
+    .rotate {
+      transform: rotate(0);
     }
     .account-btn {
       width: 120px;
@@ -199,14 +196,12 @@ nav {
     .submenu {
       background-color: $primary-color-white;
       position: absolute;
-      bottom: -10px;
+      justify-content: center;
       left: 0;
       border-radius: 10px;
       width: 250px;
-      height: 0;
       overflow: hidden;
       transition: all $transition-duration;
-      @include d-flex(center, start);
       gap: 8px;
       flex-direction: column;
 
@@ -284,6 +279,14 @@ nav {
   }
 }
 
+.rotateIcon {
+  transform: rotate(180deg) !important;
+}
+
+.hideSubMenu {
+  display: none !important;
+}
+
 .hidden {
   width: 100vw;
   transition: all $transition-duration;
@@ -296,11 +299,13 @@ nav {
   }
   .narrow-items-con {
     @include d-flex(space-between, center);
-
   }
-}
-
-@include responsive(480px) {
+  .submenu {
+    display: flex;
+    padding: 10px;
+    height: 120px;
+    bottom: -130px;
+  }
 }
 
 @include responsive(640px) {
@@ -309,5 +314,18 @@ nav {
   }
   .narrow-items-con {
     display: none;
+  }
+  .account-btn-con {
+    &:hover .submenu {
+      padding: 10px;
+      height: 120px;
+      bottom: -130px;
+    }
+    .submenu {
+      display: flex;
+      bottom: -10px;
+      padding: 0;
+      height: 0;
+    }
   }
 }
