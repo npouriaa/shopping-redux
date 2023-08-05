@@ -2,8 +2,25 @@
 @import "../scss/variables.scss";
 
 .header-con {
-  padding: 20px;
   @include d-flex(center, center);
   flex-direction: column;
   width: 100%;
+}
+
+@include responsive(360px) {
+  .header-con h1.navbar-title {
+    display: none;
+  }
+  .header-con {
+    padding: 0;
+  }
+}
+
+@include responsive(640px) {
+  .header-con h1.navbar-title {
+    display: block;
+  }
+  .header-con {
+    padding: 20px;
+  }
 }

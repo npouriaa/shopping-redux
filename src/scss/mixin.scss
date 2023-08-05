@@ -27,16 +27,14 @@
   align-items: $align;
 }
 
-@mixin w-full {
- width : 100%;
-}
-
-@mixin h-full {
- height: 100%;
+@mixin btn-style {
+  cursor: pointer;
+  border: none;
+  outline: none;
 }
 
 @mixin responsive($size) {
   @media (min-width: $size) {
-    @content
+    @content;
   }
 }

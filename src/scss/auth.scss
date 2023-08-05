@@ -6,13 +6,13 @@
   height: 450px;
   background-color: #f1f4f5;
   border-radius: 15px;
-  box-shadow: 0 0 30px 5px rgba(86, 121, 171, .1);
+  box-shadow: 0 0 30px 5px rgba(86, 121, 171, 0.1);
   padding: 10px;
   flex-direction: column;
   gap: 20px;
   @include d-flex(space-evenly, center);
   .text-con {
-    @include w-full;
+    width: 100%;
     padding: 5px;
     gap: 5px;
     @include d-flex(center, center);
@@ -28,7 +28,7 @@
     }
   }
   .form {
-    @include w-full;
+    width: 100%;
     @include d-flex(center, center);
     flex-direction: column;
     gap: 50px;
@@ -44,7 +44,7 @@
       }
     }
     .button-con {
-      @include w-full;
+      width: 100%;
       @include d-flex(center, center);
       flex-direction: column;
       gap: 15px;
@@ -98,4 +98,3 @@
     width: 80%;
   }
 }
-

@@ -49,17 +49,15 @@ const authorization = async (
 };
 
 const AuthContextProvider = ({ children }) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const unSub = onAuthStateChanged(auth, (user) => {
-    dispatch(authActions.setCurrentUser(user))
-    console.log(user)
+    dispatch(authActions.setCurrentUser(user));
   });
-  useEffect(() => {
 
-    return () => {
-      unSub();
-    };
+  useEffect(() => {
+    unSub();
   }, []);
+
   return (
     <AuthContext.Provider value={{ validator, authorization }}>
       {children}
