@@ -1,73 +1,16 @@
 import React, { useRef } from "react";
 import "../scss/navbar.scss";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import LogoutIcon from "@mui/icons-material/Logout";
-import { useSelector } from "react-redux";
-import { signOut } from "firebase/auth";
-import { auth } from "../firebase";
+import AuthBtn from "./AuthBtn";
 
 const NavBar = () => {
   const hamburgerMenuRef = useRef();
-  const arrowIconRef = useRef();
-  const currentUser = useSelector((state) => state.auth.currentUser);
-  const navigate = useNavigate();
-  const subMenuRef = useRef();
-
-  const signOutUser = () => {
-    signOut(auth);
-    navigate("/login");
-  };
-
-  const accountBtnHandler = () => {
-    arrowIconRef.current.classList.toggle("rotateIcon");
-    subMenuRef.current.classList.toggle("hideSubMenu");
-  };
-
   return (
     <>
       <nav>
         <div className="wide-items-con">
-          {!currentUser ? (
-            <Link className="link" to="/sign-up">
-              <button className="auth-btn btn">
-                <span></span>
-                <div className="text-layer">
-                  <AccountCircleIcon className="icon" />
-                  sign up / login
-                </div>
-              </button>
-            </Link>
-          ) : (
-            <div className="account-btn-con">
-              <button className="account-btn btn">
-                <span className="acc-btn-color-layer"></span>
-                <div className="text-layer">
-                  <AccountCircleIcon className="icon" />
-                  account
-                  <KeyboardArrowDownIcon className="icon rotate" />
-                </div>
-              </button>
-              <div className="submenu">
-                <p>Email :</p>
-                <p>{currentUser.email}</p>
-                <div className="signout-btn-con">
-                  <button
-                    onClick={() => signOutUser()}
-                    className="signout-btn btn"
-                  >
-                    <span className=""></span>
-                    <div className="text-layer">
-                      <LogoutIcon className="icon" />
-                      sign out
-                    </div>
-                  </button>
-                </div>
-              </div>
-            </div>
-          )}
+          <AuthBtn/>
           <ul className="menu-items">
             <Link className="link">
               <li>
@@ -113,53 +56,7 @@ const NavBar = () => {
           </Link>
         </div>
         <div className="narrow-items-con">
-          {!currentUser ? (
-            <Link className="link" to="/sign-up">
-              <button className="auth-btn btn">
-                <span></span>
-                <div className="text-layer">
-                  <AccountCircleIcon className="icon" />
-                  sign up / login
-                </div>
-              </button>
-            </Link>
-          ) : (
-            <div className="account-btn-con">
-              <button
-                onClick={() => accountBtnHandler()}
-                className="account-btn btn"
-              >
-                <span className="acc-btn-color-layer"></span>
-                <div className="text-layer">
-                  <AccountCircleIcon className="icon" />
-                  account
-                  <KeyboardArrowDownIcon
-                    ref={arrowIconRef}
-                    className="icon rotate "
-                  />
-                </div>
-              </button>
-              <div
-                ref={subMenuRef}
-                className="submenu hideSubMenu submenu-effect"
-              >
-                <p>Email :</p>
-                <p>{currentUser.email}</p>
-                <div className="signout-btn-con">
-                  <button
-                    onClick={() => signOutUser()}
-                    className="signout-btn btn"
-                  >
-                    <span className=""></span>
-                    <div className="text-layer">
-                      <LogoutIcon className="icon" />
-                      sign out
-                    </div>
-                  </button>
-                </div>
-              </div>
-            </div>
-          )}
+          <AuthBtn/>
           <button className="hamburger-menu-btn">
             <div className="menu-icon">
               <input

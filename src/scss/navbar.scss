@@ -7,12 +7,6 @@ nav {
   .narrow-items-con {
     padding: 10px;
     width: 100%;
-    // .auth-btn {
-    //   border-radius: 30px;
-    //   height: 40px;
-    //   @include btn-style;
-    //   background-color: $orange-color;
-    // }
     .hamburger-menu-btn {
       z-index: 30;
       border: none;
@@ -163,9 +157,7 @@ nav {
       gap: 2px;
       z-index: 20;
     }
-    &:hover span {
-      left: 0;
-    }
+
     span {
       left: -140px;
       width: 100%;
@@ -181,12 +173,6 @@ nav {
 
   .account-btn-con {
     position: relative;
-    &:hover .acc-btn-color-layer {
-      left: 0;
-    }
-    &:hover .rotate {
-      transform: rotate(180deg);
-    }
     .rotate {
       transform: rotate(0);
     }
@@ -283,10 +269,6 @@ nav {
   transform: rotate(180deg) !important;
 }
 
-.hideSubMenu {
-  display: none !important;
-}
-
 .hidden {
   width: 100vw;
   transition: all $transition-duration;
@@ -294,6 +276,9 @@ nav {
 }
 
 @include responsive(360px) {
+  .hideSubMenu {
+    display: none !important;
+  }
   .wide-items-con {
     display: none;
   }
@@ -315,11 +300,25 @@ nav {
   .narrow-items-con {
     display: none;
   }
+}
+
+@include responsive(941px) {
+  .hideSubMenu{
+    display: flex !important;
+  }
+  .btn {
+    &:hover span {
+      left: 0;
+    }
+  }
   .account-btn-con {
     &:hover .submenu {
       padding: 10px;
       height: 120px;
       bottom: -130px;
+    }
+    &:hover .rotate {
+      transform: rotate(180deg);
     }
     .submenu {
       display: flex;
