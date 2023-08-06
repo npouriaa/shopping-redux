@@ -6,7 +6,6 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { useSelector } from "react-redux";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
-import "../scss/authBtn.scss";
 
 const AuthBtn = () => {
   const arrowIconRef = useRef();
