@@ -1,0 +1,9 @@
+@import './variables.scss';
+@import './mixin.scss';
+
+.carts-con{
+    width: 1000px;
+    @include d-flex(center , center);
+    padding: 45px;
+    margin-top: 30px;
+}

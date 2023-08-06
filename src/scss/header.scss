@@ -4,6 +4,7 @@
 .header-con {
   @include d-flex(center, center);
   flex-direction: column;
+  gap: 10px;
   width: 100%;
 }
 
