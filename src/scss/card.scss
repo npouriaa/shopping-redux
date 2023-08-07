@@ -1,29 +1,27 @@
 @import "./variables.scss";
 @import "./mixin.scss";
 
-.cart {
+.card {
+  box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.1);
   padding: 10px;
-  width: 250px;
-  height: 350px;
-  background-color: #7417ed;
+  width: 240px;
+  height: 310px;
+  background-color: #fff;
   border-radius: 20px;
   position: relative;
   @include d-flex(end, center);
   flex-direction: column;
-  img {
+  .product-image {
     position: absolute;
     top: -70px;
-    width: 200px;
+    width: 180px;
   }
 
   .modern {
     position: absolute;
-    text-transform: uppercase;
-    letter-spacing: 20px;
-    font-size: 40px;
-    color: #fff;
+    height: 100px;
     transform: rotate(-90deg);
-    right: -105px;
+    right: -230px;
     top: 40%;
   }
 
@@ -31,24 +29,35 @@
     @include d-flex(center, start);
     flex-direction: column;
     width: 100%;
-    height: 50%;
+    height: 60%;
     padding: 7px;
-    color: $primary-color-white;
+    color: $primary-color-black;
     letter-spacing: 1px;
     gap: 10px;
+
+    .star-icon {
+      font-size: 18px;
+    }
+
+    .empty-star {
+      color: #e6e6e6;
+    }
+    .full-star {
+      color: #ffc107;
+    }
     .new-badge {
-      background-color: $primary-color-white;
-      color: $primary-color-black;
-      width: 60px;
-      height: 25px;
+      background-color: $primary-color-black;
+      color: $primary-color-white;
+      width: 55px;
+      height: 22px;
       font-size: 12px;
       border-radius: 10px;
       font-weight: 900;
       @include d-flex(center, center);
     }
-    .price{
-        font-weight: 400;
+    .price {
+      font-size: 20px;
+      font-weight: 800;
     }
   }
-  
 }

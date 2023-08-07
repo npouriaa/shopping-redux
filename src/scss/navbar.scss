@@ -135,41 +135,6 @@ nav {
   .auth-btn {
     width: 140px;
   }
-  .btn {
-    @include btn-style;
-    height: 40px;
-    position: relative;
-    border-radius: 20px;
-    color: $primary-color-white;
-    text-transform: uppercase;
-    background-color: $orange-color;
-    overflow: hidden;
-    .icon {
-      transition: all $transition-duration;
-      height: 20px;
-    }
-    .text-layer {
-      width: 100%;
-      height: 100%;
-      top: 0;
-      position: absolute;
-      @include d-flex(center, center);
-      gap: 2px;
-      z-index: 20;
-    }
-
-    span {
-      left: -140px;
-      width: 100%;
-      height: 100%;
-      transition: all $transition-duration;
-      position: absolute;
-      top: 0;
-      z-index: 10;
-      border-radius: 20px;
-      background-color: $purple-color;
-    }
-  }
 
   .account-btn-con {
     position: relative;
@@ -180,6 +145,7 @@ nav {
       width: 120px;
     }
     .submenu {
+      z-index: 20;
       background-color: $primary-color-white;
       position: absolute;
       justify-content: center;
@@ -211,7 +177,7 @@ nav {
   width: 100vw;
   height: 100vh;
   bottom: 0;
-  position: absolute;
+  position: fixed;
   background-color: $purple-color;
   transition: all $transition-duration;
   overflow: hidden;

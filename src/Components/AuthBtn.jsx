@@ -1,21 +1,19 @@
-import React, { useRef } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, {  useRef } from "react";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { useSelector } from "react-redux";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
+import Button from "./Button";
 
 const AuthBtn = () => {
   const arrowIconRef = useRef();
   const currentUser = useSelector((state) => state.auth.currentUser);
-  const navigate = useNavigate();
   const subMenuRef = useRef();
 
   const signOutUser = () => {
     signOut(auth);
-    navigate("/login");
   };
 
   const accountBtnHandler = () => {
@@ -26,42 +24,38 @@ const AuthBtn = () => {
   return (
     <>
       {!currentUser ? (
-        <Link className="link" to="/sign-up">
-          <button className="auth-btn btn">
-            <span></span>
-            <div className="text-layer">
-              <AccountCircleIcon className="icon" />
-              sign up / login
-            </div>
-          </button>
-        </Link>
+        <Button
+          route={"/login"}
+          type={"auth-btn"}
+          icon={<AccountCircleIcon className="icon" />}
+          text={"sign up / login"}
+        />
       ) : (
         <div className="account-btn-con">
-          <button
-            onClick={() => accountBtnHandler()}
-            className="account-btn btn"
-          >
-            <span className="acc-btn-color-layer"></span>
-            <div className="text-layer">
-              <AccountCircleIcon className="icon" />
-              account
+          <Button
+            route={""}
+            type={"account-btn"}
+            icon={<AccountCircleIcon className="icon" />}
+            arrowIcon={
               <KeyboardArrowDownIcon
                 ref={arrowIconRef}
                 className="icon rotate"
               />
-            </div>
-          </button>
+            }
+            text={"account"}
+            onClick={accountBtnHandler}
+          />
           <div ref={subMenuRef} className="submenu hideSubMenu">
             <p>Email :</p>
             <p>{currentUser.email}</p>
             <div className="signout-btn-con">
-              <button onClick={() => signOutUser()} className="signout-btn btn">
-                <span className=""></span>
-                <div className="text-layer">
-                  <LogoutIcon className="icon" />
-                  sign out
-                </div>
-              </button>
+              <Button
+                route={""}
+                type={"signout-btn"}
+                icon={<LogoutIcon className="icon" />}
+                text={"sign out"}
+                onClick={signOutUser}
+              />
             </div>
           </div>
         </div>

@@ -4,7 +4,10 @@ import Card from './Card'
 
 const Cards = () => {
   return (
-    <div className='carts-con'>
+    <div className='cards-con'>
+        <Card/>
+        <Card/>
+        <Card/>
         <Card/>
     </div>
   )

@@ -3,6 +3,7 @@ import "../scss/navbar.scss";
 import { Link } from "react-router-dom";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import AuthBtn from "./AuthBtn";
+import Button from "./Button";
 
 const NavBar = () => {
   const hamburgerMenuRef = useRef();
@@ -10,7 +11,7 @@ const NavBar = () => {
     <>
       <nav>
         <div className="wide-items-con">
-          <AuthBtn/>
+          <AuthBtn />
           <ul className="menu-items">
             <Link className="link">
               <li>
@@ -45,18 +46,15 @@ const NavBar = () => {
               </li>
             </Link>
           </ul>
-          <Link>
-            <button className="cart-btn btn">
-              <span></span>
-              <div className="text-layer">
-                <ShoppingCartIcon className="cart-icon" />
-                cart
-              </div>
-            </button>
-          </Link>
+          <Button
+            route={""}
+            type={"cart-btn"}
+            icon={<ShoppingCartIcon className="cart-icon" />}
+            text={"cart"}
+          />
         </div>
         <div className="narrow-items-con">
-          <AuthBtn/>
+          <AuthBtn />
           <button className="hamburger-menu-btn">
             <div className="menu-icon">
               <input
