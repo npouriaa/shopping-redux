@@ -1,8 +1,13 @@
 @import "./scss/mixin.scss";
 @import "./scss/variables.scss";
 
+@font-face {
+  font-family: "adineue";
+  src: url(./assets/fonts/adineue-pro-regular.ttf);
+}
+
 * {
-  @include font-md();
+  font-family: "adineue" !important;
   padding: 0;
   margin: 0;
   box-sizing: border-box;

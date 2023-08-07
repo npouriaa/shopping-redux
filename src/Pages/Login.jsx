@@ -29,7 +29,7 @@ const Login = () => {
   return (
     <Auth
       title="login"
-      welcome="welocome back"
+      welcome="welcome back"
       description="login now and enjoyy shopping"
       route="sign-up"
       routeText="Dont have an account ? Sign up"

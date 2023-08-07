@@ -37,9 +37,14 @@
   }
 }
 
-
 .rotateIcon {
   transform: rotate(180deg) !important;
+}
+
+.add-to-cart-btn{
+  width: 130px;
+  height: 35px !important;
+  font-size: 13px;
 }
 
 .cart-btn {

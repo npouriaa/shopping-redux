@@ -5,6 +5,7 @@ import modern from "../assets/images/modern.png";
 import Rating from "@mui/material/Rating";
 import StarIcon from "@mui/icons-material/Star";
 import Button from "./Button";
+import AddIcon from "@mui/icons-material/Add";
 
 const Card = () => {
   const [rating, setRating] = useState(0);
@@ -29,7 +30,12 @@ const Card = () => {
           />
         </div>
         <h1 className="price">$40.64</h1>
-        <Button route={""} type={"add-to-cart-btn"} />
+        <Button
+          route={""}
+          type={"add-to-cart-btn"}
+          icon={<AddIcon className="icon" />}
+          text={'add to cart'}
+        />
       </div>
     </div>
   );
