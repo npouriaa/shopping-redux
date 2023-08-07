@@ -127,48 +127,7 @@ nav {
         }
       }
     }
-    .cart-btn {
-      width: 90px;
-    }
-  }
 
-  .auth-btn {
-    width: 140px;
-  }
-
-  .account-btn-con {
-    position: relative;
-    .rotate {
-      transform: rotate(0);
-    }
-    .account-btn {
-      width: 120px;
-    }
-    .submenu {
-      z-index: 20;
-      background-color: $primary-color-white;
-      position: absolute;
-      justify-content: center;
-      left: 0;
-      border-radius: 10px;
-      width: 250px;
-      overflow: hidden;
-      transition: all $transition-duration;
-      gap: 8px;
-      flex-direction: column;
-
-      .signout-btn-con {
-        width: 100%;
-        @include d-flex(center, center);
-        .signout-btn {
-          width: 100px;
-          background-color: red;
-          span {
-            background-color: #b30808;
-          }
-        }
-      }
-    }
   }
 }
 
@@ -231,9 +190,6 @@ nav {
   }
 }
 
-.rotateIcon {
-  transform: rotate(180deg) !important;
-}
 
 .hidden {
   width: 100vw;
@@ -242,20 +198,11 @@ nav {
 }
 
 @include responsive(360px) {
-  .hideSubMenu {
-    display: none !important;
-  }
   .wide-items-con {
     display: none;
   }
   .narrow-items-con {
     @include d-flex(space-between, center);
-  }
-  .submenu {
-    display: flex;
-    padding: 10px;
-    height: 120px;
-    bottom: -130px;
   }
 }
 
@@ -265,32 +212,5 @@ nav {
   }
   .narrow-items-con {
     display: none;
-  }
-}
-
-@include responsive(941px) {
-  .hideSubMenu{
-    display: flex !important;
-  }
-  .btn {
-    &:hover span {
-      left: 0;
-    }
-  }
-  .account-btn-con {
-    &:hover .submenu {
-      padding: 10px;
-      height: 120px;
-      bottom: -130px;
-    }
-    &:hover .rotate {
-      transform: rotate(180deg);
-    }
-    .submenu {
-      display: flex;
-      bottom: -10px;
-      padding: 0;
-      height: 0;
-    }
   }
 }

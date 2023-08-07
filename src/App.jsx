@@ -3,7 +3,6 @@ import "./App.scss";
 import { useSelector } from "react-redux";
 import Loader from "./Components/Loader";
 import Routers from "./Routers/Routers";
-import Auth from "./Components/Auth";
 import AuthContextProvider from "./Context/AuthContext";
 
 const App = () => {

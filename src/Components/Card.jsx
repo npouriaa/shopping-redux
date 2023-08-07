@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import "../scss/card.scss";
 import tshirt from "../assets/images/tshirt.png";
-import modern from '../assets/images/modern.png'
+import modern from "../assets/images/modern.png";
 import Rating from "@mui/material/Rating";
 import StarIcon from "@mui/icons-material/Star";
+import Button from "./Button";
 
 const Card = () => {
-  const [rating , setRating] = useState(0)
+  const [rating, setRating] = useState(0);
 
   return (
     <div className="card">
@@ -28,7 +29,7 @@ const Card = () => {
           />
         </div>
         <h1 className="price">$40.64</h1>
-        
+        <Button route={""} type={"add-to-cart-btn"} />
       </div>
     </div>
   );
