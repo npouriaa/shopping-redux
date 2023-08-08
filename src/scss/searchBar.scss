@@ -1,0 +1,49 @@
+@import "./variables.scss";
+@import "./mixin.scss";
+
+.searchBar-con {
+  @include d-flex(center, center);
+  height: 50px;
+  gap: 10px;
+  .search-btn {
+    transition: all $transition-duration;
+    &:hover {
+      background-color: #cb4736;
+    }
+    background-color: $orange-color;
+    .search-icon {
+      color: $primary-color-white;
+    }
+  }
+  .input-icon {
+    background-color: $primary-color-white;
+    border-radius: 30px;
+    width: 450px;
+    height: 100%;
+    overflow: hidden;
+    input {
+      padding: 20px;
+      outline: none;
+      border: none;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+@include responsive(360px) {
+  .searchBar-con {
+    width: 100%;
+    .input-icon {
+      width: 80%;
+    }
+  }
+}
+@include responsive(640px) {
+  .searchBar-con {
+    width: 735px;
+    .input-icon {
+      width: 450px;
+    }
+  }
+}

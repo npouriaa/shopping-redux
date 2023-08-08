@@ -9,7 +9,7 @@ import { errorActions } from "../redux/errorSlice";
 
 const Cards = () => {
   const dispatch = useDispatch();
-  const { products } = useSelector((state) => state.products);
+  const { productsSearch } = useSelector((state) => state.products);
 
   const getProducts = async () => {
     dispatch(loaderActions.setLoading(true));
@@ -31,8 +31,8 @@ const Cards = () => {
 
   return (
     <div className="cards-con">
-      {products ? (
-        products.map((product) => (
+      {productsSearch ? (
+        productsSearch.map((product) => (
           <Card
             key={product.id}
             imageSrc={product.image}
