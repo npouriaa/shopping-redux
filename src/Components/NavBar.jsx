@@ -47,7 +47,7 @@ const NavBar = () => {
             </Link>
           </ul>
           <Button
-            route={""}
+            route={"/cart"}
             type={"cart-btn"}
             icon={<ShoppingCartIcon className="cart-icon" />}
             text={"cart"}

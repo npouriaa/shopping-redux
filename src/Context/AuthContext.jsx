@@ -5,7 +5,7 @@ import { loaderActions } from "../redux/loaderSlice";
 import { notificationActions } from "../redux/notificationSlice";
 import { auth } from "../firebase";
 import { onAuthStateChanged } from "firebase/auth";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 export const AuthContext = createContext();
 
@@ -50,6 +50,7 @@ const authorization = async (
 
 const AuthContextProvider = ({ children }) => {
   const dispatch = useDispatch();
+  const currentUser = useSelector((state) => state.auth.currentUser);
   const unSub = onAuthStateChanged(auth, (user) => {
     dispatch(authActions.setCurrentUser(user));
   });
@@ -59,7 +60,7 @@ const AuthContextProvider = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ validator, authorization }}>
+    <AuthContext.Provider value={{ validator, authorization , currentUser }}>
       {children}
     </AuthContext.Provider>
   );

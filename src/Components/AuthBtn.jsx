@@ -1,15 +1,15 @@
-import React, {  useRef } from "react";
+import React, { useContext, useRef } from "react";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import LogoutIcon from "@mui/icons-material/Logout";
-import { useSelector } from "react-redux";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
 import Button from "./Button";
+import { AuthContext } from "../Context/AuthContext";
 
 const AuthBtn = () => {
   const arrowIconRef = useRef();
-  const currentUser = useSelector((state) => state.auth.currentUser);
+  const { currentUser } = useContext(AuthContext);
   const subMenuRef = useRef();
 
   const signOutUser = () => {

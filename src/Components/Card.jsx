@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "../scss/card.scss";
 import modern from "../assets/images/modern.png";
 import Rating from "@mui/material/Rating";
 import StarIcon from "@mui/icons-material/Star";
 import Button from "./Button";
 import AddIcon from "@mui/icons-material/Add";
+import { AuthContext } from "../Context/AuthContext";
 
 const Card = ({ imageSrc, title, price }) => {
+  const { currentUser } = useContext(AuthContext);
   const [rating, setRating] = useState(0);
 
   return (
@@ -32,7 +34,7 @@ const Card = ({ imageSrc, title, price }) => {
         </div>
         <h1 className="price">${price}</h1>
         <Button
-          route={""}
+          route={currentUser ? '' : '/login'}
           type={"add-to-cart-btn"}
           icon={<AddIcon className="icon" />}
           text={"add to cart"}
