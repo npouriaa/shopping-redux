@@ -9,7 +9,12 @@ const Button = ({ route, type, icon, arrowIcon, text, onClick }) => {
         <span></span>
         <div className="text-layer">
           {icon}
-          {text}
+          <div className="texts-con">
+            <div className="texts">
+              <p>{text}</p>
+              <p className="second">{text}</p>
+            </div>
+          </div>
           {arrowIcon}
         </div>
       </button>

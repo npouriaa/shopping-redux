@@ -37,7 +37,7 @@ const Card = ({ imageSrc, title, price }) => {
           route={currentUser ? '' : '/login'}
           type={"add-to-cart-btn"}
           icon={<AddIcon className="icon" />}
-          text={"add to cart"}
+          text={"Add to cart"}
         />
       </div>
     </div>
