@@ -13,19 +13,19 @@ const NavBar = () => {
         <div className="wide-items-con">
           <AuthBtn />
           <ul className="menu-items">
-            <Link className="link">
+            <Link to="/" className="link">
               <li>
                 <div className="">
-                  <p>Men</p>
-                  <span>Men</span>
+                  <p>home</p>
+                  <span>home</span>
                 </div>
               </li>
             </Link>
             <Link className="link">
               <li>
                 <div className="">
-                  <p>women</p>
-                  <span>women</span>
+                  <p>support</p>
+                  <span>support</span>
                 </div>
               </li>
             </Link>
@@ -79,17 +79,17 @@ const NavBar = () => {
           <p>enablement is what we do </p>
         </div>
         <ul>
-          <Link className="link">
+          <Link to="/" className="link">
             <li>
               <span className="li-line"></span>
-              Men
+              home
               <span className="li-num">01</span>
             </li>
           </Link>
           <Link className="link">
             <li>
               <span className="li-line"></span>
-              women
+              support
               <span className="li-num">02</span>
             </li>
           </Link>
@@ -107,7 +107,7 @@ const NavBar = () => {
               <span className="li-num">04</span>
             </li>
           </Link>
-          <Link className="link">
+          <Link to="/cart" className="link">
             <li>
               <span className="li-line"></span>
               cart
