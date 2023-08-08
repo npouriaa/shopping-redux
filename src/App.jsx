@@ -7,7 +7,6 @@ import AuthContextProvider from "./Context/AuthContext";
 
 const App = () => {
   const loading = useSelector((state) => state.loader.loading);
-
   return (
     <AuthContextProvider>
       <div className="container">

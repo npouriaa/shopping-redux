@@ -13,23 +13,33 @@
   flex-direction: column;
   .product-image {
     position: absolute;
+    z-index: 10;
     top: -70px;
-    width: 180px;
+    object-fit: contain;
+    width: 160px;
+    height: 190px;
   }
-
-  .modern {
+  .modern-con {
+    right: 0;
+    bottom: 0;
     position: absolute;
-    height: 100px;
-    transform: rotate(-90deg);
-    right: -230px;
-    top: 40%;
+    overflow: hidden;
+    height: 100%;
+    width: 80px;
+    .modern {
+      position: absolute;
+      height: 100px;
+      transform: rotate(-90deg);
+      right: -230px;
+      top: 40%;
+    }
   }
 
   .details {
     @include d-flex(center, start);
     flex-direction: column;
     width: 100%;
-    height: 60%;
+    height: 70%;
     padding: 7px;
     color: $primary-color-black;
     letter-spacing: 1px;

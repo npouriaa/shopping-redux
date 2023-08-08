@@ -14,8 +14,25 @@
   }
 }
 
+
 @include responsive(941px) {
   .cards-con {
+    width: 900px;
     gap: 20px;
+  }
+}
+
+
+@include responsive(1025px) {
+  .cards-con {
+    width: 1000px;
+    gap: 50px;
+  }
+}
+
+@include responsive(1280px) {
+  .cards-con {
+    gap: 100px;
+    width: 1200px;
   }
 }
