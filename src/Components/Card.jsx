@@ -10,7 +10,7 @@ const Card = ({ imageSrc, title, price }) => {
   const [rating, setRating] = useState(0);
 
   return (
-    <div className="card">
+    <div  className="card">
       <img className="product-image" src={imageSrc} alt="product-image" />
       <div className="modern-con">
         <img src={modern} className="modern" alt="modern" />

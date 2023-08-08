@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "./authSlice";
 import loaderReducer from "./loaderSlice";
+import errorReducer from "./errorSlice";
 import notificationReducer from "./notificationSlice";
 import productsReducer from "./productsSlice";
 
@@ -10,6 +11,7 @@ const store = configureStore({
     loader: loaderReducer,
     notification: notificationReducer,
     products: productsReducer,
+    error: errorReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

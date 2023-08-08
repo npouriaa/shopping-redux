@@ -1,0 +1,21 @@
+@import "./variables.scss";
+@import "./mixin.scss";
+
+.error-con {
+  color: $primary-color-white;
+  letter-spacing: 2px;
+  .error {
+    height: 140px;
+    flex-direction: column;
+    position: relative;
+    @include d-flex(space-evenly, center);
+    .error-title {
+      text-transform: uppercase;
+      @include d-flex(center, center);
+      .error-icon {
+        font-size: 45px;
+        color: #ff0000;
+      }
+    }
+  }
+}

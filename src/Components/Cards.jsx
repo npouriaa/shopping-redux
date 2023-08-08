@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { loaderActions } from "../redux/loaderSlice";
 import axios from "axios";
 import { productsActions } from "../redux/productsSlice";
+import { errorActions } from "../redux/errorSlice";
 
 const Cards = () => {
   const dispatch = useDispatch();
@@ -17,9 +18,9 @@ const Cards = () => {
         "https://shopping-redux-5ad57-default-rtdb.firebaseio.com/products.json"
       );
       dispatch(productsActions.setProducts(response.data));
-      console.log(response.data);
     } catch (err) {
-      console.log(err);
+      dispatch(errorActions.setError());
+      dispatch(errorActions.setErrorMessage(err.message));
     }
     dispatch(loaderActions.setLoading(false));
   };
@@ -30,13 +31,18 @@ const Cards = () => {
 
   return (
     <div className="cards-con">
-      {products.map((product) => (
-        <Card
-          imageSrc={product.image}
-          title={product.name}
-          price={product.price}
-        />
-      ))}
+      {products ? (
+        products.map((product) => (
+          <Card
+            key={product.id}
+            imageSrc={product.image}
+            title={product.name}
+            price={product.price}
+          />
+        ))
+      ) : (
+        <h2>No Products to show !</h2>
+      )}
     </div>
   );
 };
