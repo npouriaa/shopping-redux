@@ -52,7 +52,9 @@ const authorization = async (
     dispatch(authActions.setPassword(""));
     dispatch(notificationActions.setSeverity("success"));
     dispatch(notificationActions.setMessage(message));
-    navigate('/')
+    setTimeout(() => {
+      navigate("/");
+    }, 1500);
   } catch (err) {
     dispatch(notificationActions.setSeverity("error"));
     dispatch(notificationActions.setMessage(err.message));
