@@ -8,7 +8,6 @@ const Header = () => {
     <div className="header-con">
       <h1 className="navbar-title">Online shop</h1>
       <NavBar />
-      <SearchBar/>
     </div>
   );
 };

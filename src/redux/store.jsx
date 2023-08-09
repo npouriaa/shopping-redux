@@ -4,6 +4,7 @@ import loaderReducer from "./loaderSlice";
 import errorReducer from "./errorSlice";
 import notificationReducer from "./notificationSlice";
 import productsReducer from "./productsSlice";
+import cartReducer from "./cartSlice";
 
 const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
     notification: notificationReducer,
     products: productsReducer,
     error: errorReducer,
+    cart: cartReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

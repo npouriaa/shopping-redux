@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Header from "../Components/Header";
 import "../scss/cart.scss";
 import Table from "@mui/material/Table";
@@ -10,16 +10,33 @@ import TableRow from "@mui/material/TableRow";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
+import { useDispatch, useSelector } from "react-redux";
+import { AuthContext } from "../Context/AuthContext";
+import { db } from "../firebase";
+import { doc, getDoc } from "firebase/firestore";
+import { cartActions } from "../redux/cartSlice";
 
 const Cart = () => {
+  const { cart } = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
+  const { currentUser } = useContext(AuthContext);
 
-  // const rows = [
-  //   createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-  //   createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-  //   createData("Eclair", 262, 16.0, 24, 6.0),
-  //   createData("Cupcake", 305, 37, 67, 4.3),
-  //   createData("Gingerbread", 356, 16.0, 49, 3.9),
-  // ];
+  const getUserCartProducts = async () => {
+    try {
+      const docRef = doc(db, "usersCarts", currentUser.uid);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        dispatch(cartActions.setCart(docSnap.data().cart));
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    getUserCartProducts();
+  }, [cart]);
 
   return (
     <div className="cart">
@@ -33,37 +50,37 @@ const Cart = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            <TableRow className="row">
-              <TableCell className="">
-                <div className="product-con">
-                  <img
-                    src="https://firebasestorage.googleapis.com/v0/b/shopping-redux-5ad57.appspot.com/o/tshirt.png?alt=media&token=04208888-5fb1-41ce-9618-be6c3d684255"
-                    alt="product-image"
-                  />
-                  <div className="text">
-                    <h3>Nike blazer</h3>
-                    <h3>$125.00</h3>
+            {cart?.map((product) => (
+              <TableRow key={product.id} className="row">
+                <TableCell className="">
+                  <div className="product-con">
+                    <img src={product.imageSrc} alt="product-image" />
+                    <div className="text">
+                      <h3>{product.title}</h3>
+                      <h3>{product.price}</h3>
+                    </div>
                   </div>
-                </div>
-              </TableCell>
-              <TableCell>
-                <div className="quantity-con">
-                  <div className="counter-con">
-                    <button className="counter-btn">
-                      <RemoveIcon className="counter-icon" />
-                    </button>
-                    <h3>0</h3>
-                    <button className="counter-btn">
-                      <AddIcon className="counter-icon" />
+                </TableCell>
+                <TableCell>
+                  <div className="quantity-con">
+                    <div className="counter-con">
+                      <button className="counter-btn">
+                        <RemoveIcon className="counter-icon" />
+                      </button>
+                      <h3>0</h3>
+                      <button className="counter-btn">
+                        <AddIcon className="counter-icon" />
+                      </button>
+                    </div>
+                    <button className="remove-btn">
+                      <DeleteIcon className="remove-icon" />
+                      Remove
                     </button>
                   </div>
-                  <button className="remove-btn">
-                    <DeleteIcon className="remove-icon"/>
-                    Remove
-                  </button>
-                </div>
-              </TableCell>
-            </TableRow>
+                </TableCell>
+              </TableRow>
+            ))}
+            {/* <button onClick={() => console.log(cart)}>sasas</button> */}
           </TableBody>
         </Table>
       </TableContainer>

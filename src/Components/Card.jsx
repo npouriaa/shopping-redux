@@ -11,7 +11,7 @@ import { useDispatch } from "react-redux";
 import { loaderActions } from "../redux/loaderSlice";
 import { notificationActions } from "../redux/notificationSlice";
 import { db } from "../firebase";
-import { arrayUnion, doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
+import { arrayUnion, doc, updateDoc } from "firebase/firestore";
 
 const Card = ({ id, imageSrc, title, price }) => {
   const dispatch = useDispatch();
