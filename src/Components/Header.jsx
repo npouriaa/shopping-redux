@@ -1,7 +1,6 @@
 import React from "react";
 import "../scss/header.scss";
 import NavBar from "./NavBar";
-import SearchBar from "./SearchBar";
 
 const Header = () => {
   return (

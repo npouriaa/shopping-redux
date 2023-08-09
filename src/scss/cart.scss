@@ -6,14 +6,21 @@
   height: 100%;
   flex-direction: column;
   @include d-flex(start, center);
-  overflow-x: hidden;
+  overflow: hidden;
   .table-con {
-    @include d-flex(center, center);
+    padding: 20px;
+    height: 80%;
+    @include d-flex(start, center);
     flex-direction: column;
-
+    position: relative;
     .table {
+      padding: 20px;
       background-color: $primary-color-white;
       box-shadow: 0 0 25px 5px rgba(0, 0, 0, 0.1);
+      .tbody {
+        overflow: hidden;
+        height: 10px;
+      }
       .table-header {
         font-size: 16px;
         font-weight: 800;
@@ -26,6 +33,8 @@
           padding: 10px;
           gap: 5px;
           img {
+            object-fit: contain;
+            width: 70px;
             height: 70px;
           }
           .text {
@@ -94,7 +103,6 @@
 @include responsive(640px) {
   .table {
     border-radius: 15px;
-
     width: 550px !important;
   }
 }
