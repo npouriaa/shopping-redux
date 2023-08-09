@@ -1,5 +1,5 @@
 import { Alert, Snackbar } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { notificationActions } from "../redux/notificationSlice";
 
@@ -8,9 +8,13 @@ const Notification = () => {
   const { open, severity, message } = useSelector(
     (state) => state.notification
   );
+  useEffect(() => {
+    setTimeout(() => {
+      dispatch(notificationActions.setOpen(false));
+    }, 4000);
+  }, [open]);
   return (
     <Snackbar
-      autoHideDuration={5000}
       anchorOrigin={{ vertical: "top", horizontal: "center" }}
       color="success"
       open={open}

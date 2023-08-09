@@ -28,7 +28,7 @@ const authSlice = createSlice({
     setEmailError(state, action) {
       state.emailError = action.payload;
     },
-    reserStates() {
+    resetStates() {
       return initialState;
     },
     setCurrentUser(state, action) {

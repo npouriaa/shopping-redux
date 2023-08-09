@@ -19,11 +19,9 @@ const Login = () => {
         email,
         password,
         dispatch,
-        "Logged in successfuly"
+        "Logged in successfuly",
+        navigate
       );
-      setTimeout(() => {
-        navigate("/");
-      }, 1500);
     }
   };
   return (

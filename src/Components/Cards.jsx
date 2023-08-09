@@ -35,6 +35,7 @@ const Cards = () => {
         productsSearch.map((product) => (
           <Card
             key={product.id}
+            id={product.id}
             imageSrc={product.image}
             title={product.name}
             price={product.price}

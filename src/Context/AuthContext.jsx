@@ -3,9 +3,13 @@ import * as emailValidator from "email-validator";
 import { createContext, useEffect } from "react";
 import { loaderActions } from "../redux/loaderSlice";
 import { notificationActions } from "../redux/notificationSlice";
-import { auth } from "../firebase";
-import { onAuthStateChanged } from "firebase/auth";
+import { auth, db } from "../firebase";
+import {
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+} from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 
 export const AuthContext = createContext();
 
@@ -31,15 +35,24 @@ const authorization = async (
   email,
   password,
   dispatch,
-  message
+  message,
+  navigate
 ) => {
   dispatch(loaderActions.setLoading(true));
   try {
-    await authMethod(auth, email, password);
+    const response = await authMethod(auth, email, password);
+    if (authMethod === createUserWithEmailAndPassword) {
+      const docRef = doc(db, "usersCarts", response.user.uid);
+      const docSnap = await getDoc(docRef);
+      if (!docSnap.exists()) {
+        await setDoc(docRef, { cart: [] });
+      }
+    }
     dispatch(authActions.setEmail(""));
     dispatch(authActions.setPassword(""));
     dispatch(notificationActions.setSeverity("success"));
     dispatch(notificationActions.setMessage(message));
+    navigate('/')
   } catch (err) {
     dispatch(notificationActions.setSeverity("error"));
     dispatch(notificationActions.setMessage(err.message));
@@ -60,7 +73,7 @@ const AuthContextProvider = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ validator, authorization , currentUser }}>
+    <AuthContext.Provider value={{ validator, authorization, currentUser }}>
       {children}
     </AuthContext.Provider>
   );

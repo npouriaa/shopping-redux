@@ -7,7 +7,7 @@ import Cart from "../Pages/Cart";
 import { AuthContext } from "../Context/AuthContext";
 
 const Routers = () => {
-  const { currentUser } = useContext(AuthContext);
+  const currentUser = useContext(AuthContext);
 
   const ProtectedRoute = ({ children }) => {
     if (!currentUser) {

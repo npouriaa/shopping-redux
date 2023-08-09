@@ -15,10 +15,8 @@ const Auth = ({ title, welcome, description, route, routeText, onSubmit }) => {
   const { email, password, passwordVisibility, passwordError, emailError } =
     useSelector((state) => state.auth);
 
-
-
   useEffect(() => {
-    dispatch(authActions.reserStates());
+    dispatch(authActions.resetStates());
   }, [loacation]);
 
   return (
