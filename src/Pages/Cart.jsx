@@ -13,14 +13,14 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import { useDispatch, useSelector } from "react-redux";
 import { AuthContext } from "../Context/AuthContext";
 import { db } from "../firebase";
-import { doc, getDoc, updateDoc, deleteField } from "firebase/firestore";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { cartActions } from "../redux/cartSlice";
 import { notificationActions } from "../redux/notificationSlice";
 import Notification from "../Components/Notification";
 import { loaderActions } from "../redux/loaderSlice";
 
 const Cart = () => {
-  const { cart } = useSelector((state) => state.cart);
+  const { cart, totalPrice } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const { currentUser } = useContext(AuthContext);
 
@@ -64,12 +64,42 @@ const Cart = () => {
     dispatch(loaderActions.setLoading(false));
   };
 
-  const array = [];
+  const calculateTotal = () => {
+    let totalPrice = 0;
+    cart.map((product) => {
+      totalPrice += product.quantity * product.price;
+      dispatch(cartActions.setTotalPrice(totalPrice));
+    });
+  };
+
+  const quantityHandler = async (product, op) => {
+    dispatch(loaderActions.setLoading(true));
+    try {
+      const documentRef = doc(db, "usersCarts", currentUser.uid);
+      const updatedCart = cart?.map((item) => {
+        const quantity = item.quantity + op;
+        if (item.id === product.id) {
+          return { ...item, quantity: quantity < 1 ? 1 : quantity };
+        }
+        return item;
+      });
+      await updateDoc(documentRef, {
+        cart: updatedCart,
+      });
+      dispatch(cartActions.setCart(updatedCart));
+    } catch (err) {
+      console.log(err);
+    }
+    dispatch(loaderActions.setLoading(false));
+  };
 
   useEffect(() => {
     getUserCartProducts();
-    console.log(cart);
   }, []);
+
+  useEffect(() => {
+    calculateTotal();
+  }, [cart]);
 
   return (
     <div className="cart">
@@ -99,11 +129,17 @@ const Cart = () => {
                   <TableCell>
                     <div className="quantity-con">
                       <div className="counter-con">
-                        <button className="counter-btn">
+                        <button
+                          onClick={() => quantityHandler(product, -1)}
+                          className="counter-btn"
+                        >
                           <RemoveIcon className="counter-icon" />
                         </button>
-                        <h3>0</h3>
-                        <button className="counter-btn">
+                        <h3>{product.quantity}</h3>
+                        <button
+                          onClick={() => quantityHandler(product, +1)}
+                          className="counter-btn"
+                        >
                           <AddIcon className="counter-icon" />
                         </button>
                       </div>
@@ -120,7 +156,7 @@ const Cart = () => {
               ))}
             </TableBody>
           </Table>
-          <h2 className="total">Total Price : </h2>
+          <h2 className="total">Total Price : ${totalPrice}</h2>
         </TableContainer>
       ) : (
         <h4>Your cart is empty !</h4>

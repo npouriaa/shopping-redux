@@ -26,13 +26,14 @@ const Card = ({ id, imageSrc, title, price }) => {
           imageSrc,
           title,
           price,
+          quantity: 1,
         };
-          await updateDoc(doc(db, "usersCarts", currentUser.uid), {
-            cart: arrayUnion(productsObj),
-          });
-          dispatch(notificationActions.setOpen(true));
-          dispatch(notificationActions.setSeverity("success"));
-          dispatch(notificationActions.setMessage("Added to cart successfuly"));
+        await updateDoc(doc(db, "usersCarts", currentUser.uid), {
+          cart: arrayUnion(productsObj),
+        });
+        dispatch(notificationActions.setOpen(true));
+        dispatch(notificationActions.setSeverity("success"));
+        dispatch(notificationActions.setMessage("Added to cart successfuly"));
       } catch (err) {
         dispatch(notificationActions.setOpen(true));
         dispatch(notificationActions.setSeverity("error"));
