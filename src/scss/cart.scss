@@ -8,6 +8,7 @@
   @include d-flex(start, center);
   overflow: hidden;
   .table-con {
+    overflow-x: hidden;
     padding: 20px;
     height: 80%;
     @include d-flex(start, center);
