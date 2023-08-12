@@ -70,6 +70,9 @@
   }
   .input-con {
     width: 90%;
+    .MuiFormHelperText-root{
+      font-size: 11px !important;
+    }
   }
 }
 
@@ -94,5 +97,8 @@
   }
   .input-con {
     width: 80%;
+    .MuiFormHelperText-root{
+      font-size: 13px !important;
+    }
   }
 }
